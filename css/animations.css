@@ -1,0 +1,141 @@
+/* =====================================================================
+   css/animations.css : Keyframes, Transitions & Reduced Motion
+   ===================================================================== */
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 220% 50%; }
+}
+
+@keyframes beat {
+  0%, 100% { transform: scale(1); }
+  12% { transform: scale(1.18); }
+  24% { transform: scale(1); }
+  36% { transform: scale(1.12); }
+  48% { transform: scale(1); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: .55; }
+  50% { opacity: 1; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ring {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,110,.35); }
+  50% { box-shadow: 0 0 0 10px rgba(201,169,110,0); }
+}
+
+@keyframes drip {
+  0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: .3; }
+}
+
+@keyframes kenburns {
+  from { transform: scale(1) translate(0, 0); }
+  to { transform: scale(1.12) translate(-2%, -2%); }
+}
+
+/* 3D Orbiting Rings */
+@keyframes orbitA {
+  from { transform: rotateX(72deg) rotateZ(0deg); }
+  to { transform: rotateX(72deg) rotateZ(360deg); }
+}
+@keyframes orbitB {
+  from { transform: rotateY(72deg) rotateZ(0deg); }
+  to { transform: rotateY(72deg) rotateZ(360deg); }
+}
+
+/* Floating Orbs */
+@keyframes floatA {
+  0%, 100% { transform: translateZ(90px) translateY(0); }
+  50% { transform: translateZ(90px) translateY(-14px); }
+}
+@keyframes floatB {
+  0%, 100% { transform: translateZ(110px) translateY(0); }
+  50% { transform: translateZ(110px) translateY(12px); }
+}
+
+/* Float Burst for Hearts and Confetti */
+@keyframes floatBurst {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(0.5) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(var(--vx, 0px), var(--vy, -50px)) scale(1.3) rotate(var(--rot, 15deg));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(var(--vx, 0px) * 1.5), calc(var(--vy, -50px) - 40px)) scale(0.8) rotate(calc(var(--rot, 15deg) * 2));
+  }
+}
+
+/* Letter Fade In */
+@keyframes letterFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Reveal Banner Pop */
+@keyframes revealBannerPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(30px);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.02) translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Card Flip in 50 Reasons */
+.flip {
+  animation: cardFlipIn 0.6s cubic-bezier(.34, 1.56, .64, 1) forwards;
+}
+@keyframes cardFlipIn {
+  0% {
+    opacity: 0.2;
+    transform: rotateY(-18deg) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateY(0deg) scale(1);
+  }
+}
+
+/* Rule Line Animation */
+.rule { transform: scaleX(0); transition: transform 1.4s var(--ease) .6s; }
+.in-view .rule { transform: scaleX(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition-duration: .01ms !important;
+    transition-delay: 0s !important;
+  }
+  .reveal, [data-step], .split .c {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+  .rule { transform: none; }
+}

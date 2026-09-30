@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>50 Years of Love • A Digital Memory Journey</title>
+  <meta name="description" content="A premium, emotional, and cinematic 50th birthday celebration website honoring 50 beautiful years of life, family, love, and memories.">
+  <meta name="theme-color" content="#1E1220">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Great+Vibes&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="is-loading">
+
+  <!-- Loading screen -->
+  <div id="loader" aria-live="polite">
+    <div class="loader-mark">50</div>
+    <p>Preparing something truly special…</p>
+    <div class="loader-spinner" aria-hidden="true"></div>
+  </div>
+
+  <!-- 3D world (WebGL) + 2D fallback dust -->
+  <canvas id="gl" aria-hidden="true"></canvas>
+  <canvas id="dust" aria-hidden="true"></canvas>
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <!-- Persistent Top Progress & Nav -->
+  <div id="progress" aria-hidden="true"><span></span></div>
+  
+  <header id="siteNav" class="site-nav" aria-label="Main Navigation">
+    <div class="nav-container">
+      <a href="#opening" class="nav-logo" aria-label="50 Years of Love Home">
+        <span class="logo-num">50</span>
+        <span class="logo-text">Years of Love</span>
+      </a>
+      <nav class="nav-links" id="mainNavLinks">
+        <a href="#journey" class="nav-link">01. Life Journey</a>
+        <a href="#family-letters" class="nav-link">02. Family Letters</a>
+        <a href="#memory-gallery" class="nav-link">03. Gallery</a>
+        <a href="#fifty-reasons" class="nav-link">04. 50 Reasons</a>
+        <a href="#video-wishes" class="nav-link">05. Video Wishes</a>
+        <a href="#grand-finale" class="nav-link">06. Age 1–50</a>
+        <a href="#gift-surprise" class="nav-link nav-link-gift">07. The Gift 🎁</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="musicToggle" type="button" aria-label="Toggle ambient soundtrack" aria-pressed="false" title="Play Ambient Music">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path class="note" d="M9 18V6l10-2v12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="7" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="17" cy="16" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <line class="mute" x1="3" y1="3" x2="21" y2="21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Journey Chapter Rail -->
+  <nav id="rail" aria-label="Journey Chapters"></nav>
+
+  <main>
+    <!-- ============ 1. OPENING EXPERIENCE ============ -->
+    <section id="opening" aria-label="Opening Experience">
+      <div class="opening-inner">
+        <div class="op-lines" id="opLines">
+          <p class="op-line" data-step="1">Some stories are not written in books…</p>
+          <p class="op-line" data-step="2">They are written in memories, love, and the people we cherish.</p>
+          <p class="op-line op-line-lead" data-step="3">Today, we celebrate one such beautiful story.</p>
+        </div>
+
+        <div class="op-title" data-step="4">
+          <h1 aria-label="50 Years of Her">
+            <span class="fifty" aria-hidden="true">50</span>
+            <span class="yrs" aria-hidden="true">Years of Her <span class="heart">❤</span></span>
+          </h1>
+          <p class="op-sub" data-step="5">A journey of love, strength &amp; countless memories.</p>
+        </div>
+
+        <div class="op-cta-wrap" data-step="6">
+          <button id="beginBtn" class="btn-gold" type="button">Begin Her Journey <span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+      <button id="skipIntro" class="skip" type="button">Skip intro</button>
+    </section>
+
+    <!-- ============ 2. HER LIFE JOURNEY ============ -->
+    <section id="journey" hidden aria-label="Her life journey">
+      <header class="journey-intro">
+        <p class="eyebrow reveal">Chapter One</p>
+        <h2 id="journeyTitle" class="split"></h2>
+        <p class="lede reveal" style="--d:.5s">Not a list of years, but a story of cherished moments.</p>
+        
+        <!-- Featured AI Journey Film -->
+        <div class="tilt-wrap reveal" style="--d:.7s">
+          <div id="videoSlot" class="video-slot stack"></div>
+        </div>
+        <div class="scroll-cue reveal" style="--d:.9s"><span>Scroll to discover her life</span><i></i></div>
+      </header>
+
+      <!-- Life Chapters from memories.js -->
+      <div id="chapters"></div>
+
+      <footer class="journey-close">
+        <div class="close-inner reveal">
+          <p id="closingLine" class="closing-line split"></p>
+          <div class="ornament" aria-hidden="true"><i></i><b>❤</b><i></i></div>
+          <a href="#family-letters" class="next-section-btn">Discover what she means to the family <span aria-hidden="true">↓</span></a>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ============ 3. WHAT SHE MEANS TO THE FAMILY ============ -->
+    <section id="family-letters" class="site-section" aria-label="What She Means to the Family">
+      <div class="section-container">
+        <header class="section-header reveal">
+          <p class="eyebrow">Chapter Two</p>
+          <h2 class="section-title">What She Means To The Family</h2>
+          <p class="section-subtitle">Heartfelt letters &amp; words of devotion from the people who love her most.</p>
+          <div class="ornament" aria-hidden="true"><i></i><b>❦</b><i></i></div>
+        </header>
+
+        <div class="letters-layout">
+          <!-- Letter Tabs / Senders -->
+          <div class="letters-nav reveal" id="lettersNav" role="tablist" aria-label="Letters from family members"></div>
+
+          <!-- Active Letter Display -->
+          <div class="letters-display reveal" id="lettersContent"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. CURATED MEMORY GALLERY ============ -->
+    <section id="memory-gallery" class="site-section" aria-label="Curated Memory Gallery">
+      <div class="section-container">
+        <header class="section-header reveal">
+          <p class="eyebrow">Chapter Three</p>
+          <h2 class="section-title">The Memory Wall</h2>
+          <p class="section-subtitle">Five decades captured in photographs, milestones, and timeless warmth.</p>
+          <div class="ornament" aria-hidden="true"><i></i><b>✦</b><i></i></div>
+        </header>
+
+        <!-- Category Filters -->
+        <div class="gallery-filters reveal" id="galleryFilters">
+          <button class="gallery-filter-btn active" data-filter="all">All Memories</button>
+          <button class="gallery-filter-btn" data-filter="childhood">Childhood</button>
+          <button class="gallery-filter-btn" data-filter="marriage">Marriage</button>
+          <button class="gallery-filter-btn" data-filter="motherhood">Motherhood</button>
+          <button class="gallery-filter-btn" data-filter="family">Family Life</button>
+          <button class="gallery-filter-btn" data-filter="celebrations">Celebrations</button>
+          <button class="gallery-filter-btn" data-filter="travel">Travel</button>
+          <button class="gallery-filter-btn" data-filter="recent">Recent Moments</button>
+        </div>
+
+        <!-- Polaroid / Editorial Memory Wall -->
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ 5. 50 REASONS WHY WE LOVE YOU ============ -->
+    <section id="fifty-reasons" class="site-section" aria-label="50 Reasons Why We Love You">
+      <div class="section-container">
+        <header class="section-header reveal">
+          <p class="eyebrow">Chapter Four</p>
+          <h2 class="section-title">50 Reasons Why We Love You</h2>
+          <p class="section-subtitle">Fifty unforgettable reasons that make you the sweetest heart in our universe.</p>
+          <div class="ornament" aria-hidden="true"><i></i><b>❤</b><i></i></div>
+        </header>
+
+        <div class="reasons-controls-bar reveal">
+          <div class="reasons-search-box">
+            <input type="text" id="reasonsSearchInput" placeholder="Search reasons (e.g. smile, cooking, love)..." aria-label="Search 50 reasons">
+          </div>
+          <div class="reasons-actions">
+            <button id="reasonShuffleBtn" class="btn-subtle" type="button" title="Pick a random reason"><span>🎲</span> Surprise Me</button>
+            <button id="reasonViewToggle" class="btn-subtle" type="button"><span class="icon">▦</span> View All 50</button>
+          </div>
+        </div>
+
+        <!-- Carousel / Deck View -->
+        <div class="reasons-carousel-wrap reveal" id="reasonsCarouselWrap">
+          <div class="reason-deck-card" id="reasonCard">
+            <div class="rd-inner">
+              <div class="rd-top">
+                <span class="rd-num" id="reasonNum">Reason 01</span>
+                <button class="rd-like-btn" id="reasonLikeBtn" aria-label="Love this reason" title="Heart this reason">
+                  <span class="heart-icon">❤</span>
+                </button>
+              </div>
+              <div class="rd-body">
+                <p class="rd-text" id="reasonText">Because you always put your family first.</p>
+              </div>
+              <div class="rd-bottom">
+                <div class="rd-progress-bar">
+                  <div class="rd-progress-fill" id="reasonProgressFill"></div>
+                </div>
+                <span class="rd-counter" id="reasonProgressText">1 / 50</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="reasons-nav-buttons">
+            <button id="reasonPrevBtn" class="nav-arrow-btn" aria-label="Previous Reason">←</button>
+            <button id="reasonNextBtn" class="btn-gold nav-next-gold" type="button">Next Reason →</button>
+          </div>
+        </div>
+
+        <!-- Grid View (Hidden by default) -->
+        <div class="reasons-grid-wrap" id="reasonsGridWrap" hidden>
+          <div class="reasons-grid" id="reasonsGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6. FAMILY VIDEO WISHES ============ -->
+    <section id="video-wishes" class="site-section" aria-label="Family Video Wishes">
+      <div class="section-container">
+        <header class="section-header reveal">
+          <p class="eyebrow">Chapter Five</p>
+          <h2 class="section-title">Messages From The People Who Love You</h2>
+          <p class="section-subtitle">Heartwarming video greetings and blessings from family &amp; friends across the world.</p>
+          <div class="ornament" aria-hidden="true"><i></i><b>🎬</b><i></i></div>
+        </header>
+
+        <div class="wishes-video-grid" id="wishesVideoGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============ 7. THE GRAND FINALE — AGE 1 TO 50 ============ -->
+    <section id="grand-finale" class="site-section finale-section" aria-label="The Grand Finale — Age 1 to 50">
+      <div class="section-container">
+        <header class="section-header reveal">
+          <p class="eyebrow">The Climax</p>
+          <h2 class="section-title">The Grand Journey • Age 1 to 50</h2>
+          <p class="section-subtitle">Watch fifty magnificent years unfold in a single cinematic timeline.</p>
+          <div class="ornament" aria-hidden="true"><i></i><b>★</b><i></i></div>
+        </header>
+
+        <div class="finale-interactive-wrap reveal">
+          <!-- Timeline Scrubber -->
+          <div class="finale-scrubber" id="finaleScrubber" role="tablist" aria-label="Age Milestones"></div>
+
+          <!-- Time Machine Stage -->
+          <div class="finale-stage" id="finaleStageCard">
+            <div class="finale-photo-frame">
+              <img id="finalePhoto" src="assets/photos/1.jpeg" alt="Milestone photo" loading="lazy">
+              <div class="finale-age-tag">
+                <span class="tag-label">AGE</span>
+                <strong class="tag-number" id="finaleAgeNum">1</strong>
+              </div>
+              <span class="finale-year-badge" id="finaleYear">1976</span>
+            </div>
+
+            <div class="finale-info-card">
+              <span class="finale-step-eyebrow">Milestone Memory</span>
+              <h3 class="finale-milestone-title" id="finaleTitle">The First Smile</h3>
+              <p class="finale-milestone-desc" id="finaleDesc">A precious gift to this world, born with bright eyes and a soul made of pure light.</p>
+              
+              <div class="finale-controls">
+                <button id="finalePrevBtn" class="btn-subtle" type="button">← Previous Age</button>
+                <button id="finalePlayBtn" class="btn-gold" type="button"><span class="icon">▶</span> Auto-Play Journey</button>
+                <button id="finaleNextBtn" class="btn-subtle" type="button">Next Age →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- The Grand Birthday 50 Reveal Banner (Explodes at Age 50) -->
+          <div class="finale-reveal-banner" id="finaleRevealBanner">
+            <div class="fr-glow" aria-hidden="true"></div>
+            <div class="fr-content">
+              <div class="fr-stars">✦ ✦ ✦ ✦ ✦</div>
+              <p class="fr-quote">“50 years of laughter.<br>50 years of strength.<br>50 years of love.<br>50 years of memories.”</p>
+              <h2 class="fr-headline">HAPPY 50TH BIRTHDAY ❤️</h2>
+              <p class="fr-tribute">Honoring the queen of our hearts on her golden jubilee milestone.</p>
+              <button id="finaleCelebrateBtn" class="btn-gold celebrate-btn" type="button">Celebrate With Confetti &amp; Fireworks ✨</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 8. GIFT REVEAL & LIVE GUESTBOOK ============ -->
+    <section id="gift-surprise" class="site-section gift-section" aria-label="Gift Reveal and Wishes">
+      <div class="section-container">
+        <header class="section-header reveal">
+          <p class="eyebrow">The Final Surprise</p>
+          <h2 class="section-title">One More Thing…</h2>
+          <p class="section-subtitle">Because someone who gives everything deserves the world in return.</p>
+          <div class="ornament" aria-hidden="true"><i></i><b>🎁</b><i></i></div>
+        </header>
+
+        <!-- Unrevealed Gift Box State -->
+        <div class="gift-unrevealed reveal" id="giftUnrevealed">
+          <div class="gift-box-3d" id="giftBox" tabindex="0" role="button" aria-label="Click to open your surprise birthday gift">
+            <div class="gb-lid">
+              <div class="gb-ribbon-bow"></div>
+            </div>
+            <div class="gb-base">
+              <div class="gb-ribbon-v"></div>
+              <div class="gb-ribbon-h"></div>
+            </div>
+            <span class="gb-hint">Click Box To Open</span>
+          </div>
+
+          <div class="gift-prompt-wrap">
+            <h3 class="gift-teaser-headline">A Little Surprise For You ❤️</h3>
+            <p class="gift-teaser-sub">Wrapped with all our love, gratitude, and sweetest wishes.</p>
+            <button id="openGiftBtn" class="btn-gold gift-open-btn" type="button">Open Your Gift ❤️</button>
+          </div>
+        </div>
+
+        <!-- Revealed Gift State -->
+        <div class="gift-revealed" id="giftRevealed" hidden>
+          <div class="gift-golden-ticket">
+            <div class="ticket-header">
+              <span class="ticket-seal">✦ GOLDEN 50 PASS ✦</span>
+              <span class="ticket-code">LOVE-50-FOREVER</span>
+            </div>
+            <h3 class="ticket-title">A Dream Golden Getaway &amp; Family Celebration!</h3>
+            <p class="ticket-subtitle">An all-inclusive luxury family retreat to create unforgettable new memories together.</p>
+            <div class="ticket-divider"></div>
+            <p class="ticket-letter">
+              “Amma, this gift is just a tiny token compared to the millions of sacrifices you made for all of us. You have given us 50 years of unmeasurable love. Now, it’s our turn to pamper you!”
+            </p>
+            <div class="ticket-footer">
+              <span class="ticket-from">From Suresh, Ananya, Karthik &amp; The Entire Family</span>
+              <span class="ticket-date">September 30, 2026</span>
+            </div>
+          </div>
+          
+          <div class="gift-closing-quote">
+            <p>“This website is only a small collection of memories… but the love we have for you is endless.”</p>
+            <div class="ornament" aria-hidden="true"><i></i><b>❤</b><i></i></div>
+          </div>
+        </div>
+
+        <!-- Live Family Love Guestbook -->
+        <div class="guestbook-wrap reveal">
+          <div class="guestbook-header">
+            <h3 class="guestbook-title">Leave Your Birthday Wish</h3>
+            <p class="guestbook-subtitle">Add your heartfelt message to her permanent Golden Memory Wall.</p>
+          </div>
+
+          <form class="guestbook-form" id="guestbookForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="wishName">Your Name &amp; Relation</label>
+                <input type="text" id="wishName" placeholder="e.g. Suresh (Husband) / Priya (Friend)" required>
+              </div>
+              <div class="form-group emoji-group">
+                <label for="wishEmoji">Select Emoji</label>
+                <select id="wishEmoji">
+                  <option value="❤">❤ Heart</option>
+                  <option value="🎂">🎂 Birthday Cake</option>
+                  <option value="🌟">🌟 Golden Star</option>
+                  <option value="💖">💖 Sparkle Heart</option>
+                  <option value="💐">💐 Bouquet</option>
+                  <option value="🎉">🎉 Celebration</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="wishMessage">Your Birthday Message</label>
+              <textarea id="wishMessage" rows="3" placeholder="Write your heartfelt blessing and wishes for her 50th birthday..." required></textarea>
+            </div>
+            <button type="submit" class="btn-gold">Send With Love ❤</button>
+          </form>
+
+          <div class="guestbook-wall" id="guestbookWall"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ LIGHTBOX MODAL ============ -->
+  <div class="lightbox-modal" id="galleryLightbox" aria-hidden="true" role="dialog" aria-label="Photo View">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-container">
+      <button class="lightbox-close" aria-label="Close Lightbox">✕</button>
+      <button class="lightbox-prev" aria-label="Previous Image">‹</button>
+      <button class="lightbox-next" aria-label="Next Image">›</button>
+      
+      <div class="lightbox-content">
+        <div class="lightbox-img-wrap">
+          <img id="lightboxImg" src="" alt="Enlarged memory">
+        </div>
+        <div class="lightbox-caption-bar">
+          <div class="lightbox-text">
+            <span class="lightbox-year" id="lightboxYear"></span>
+            <h3 class="lightbox-title" id="lightboxTitle"></h3>
+            <p class="lightbox-desc" id="lightboxDesc"></p>
+          </div>
+          <span class="lightbox-count" id="lightboxCount">1 / 8</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ VIDEO WISHES MODAL ============ -->
+  <div class="video-modal" id="wishesVideoModal" aria-hidden="true" role="dialog" aria-label="Video Wish Player">
+    <div class="video-modal-backdrop"></div>
+    <div class="video-modal-container">
+      <button class="video-modal-close" aria-label="Close Video Player">✕</button>
+      <div class="video-modal-player-wrap">
+        <video id="wishesModalVideo" controls playsinline preload="metadata"></video>
+      </div>
+      <div class="video-modal-info">
+        <span class="video-modal-subtitle" id="wishesModalSubtitle"></span>
+        <h3 class="video-modal-title" id="wishesModalTitle"></h3>
+        <p class="video-modal-quote" id="wishesModalQuote"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-mark">50</div>
+      <p class="footer-tribute">Created with endless love for our dearest Amma on her 50th Golden Milestone.</p>
+      <p class="footer-copy">50 Years of Love • A Digital Memory Journey • 1976 – 2026</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/vendor/three.min.js"></script>
+  <script src="data/memories.js"></script>
+  <script src="js/ambient-audio.js"></script>
+  <script src="js/tilt.js"></script>
+  <script src="js/scene.js"></script>
+  <script src="js/timeline.js"></script>
+  <script src="js/family-letters.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/reasons.js"></script>
+  <script src="js/video-wishes.js"></script>
+  <script src="js/finale.js"></script>
+  <script src="js/gift.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
