@@ -17,7 +17,7 @@ window.MEMORIES = {
 
   // AI-generated life journey video
   journeyVideo: {
-    src: "assets/videos/video.mp4",
+    src: "assets/videos/video2-final.mp4",
     poster: "assets/photos/5.png",
     title: "50 Years of Her — In Motion",
     note: "A cinematic tribute celebrating every chapter of her extraordinary life."
@@ -57,7 +57,7 @@ window.MEMORIES = {
       years: "1998",
       mood: "gold",
       image: "assets/photos/3.jpeg",
-      video: "assets/videos/video.mp4",
+      video: "assets/videos/video2-final.mp4",
       images: ["assets/photos/3.jpeg", "assets/photos/4.png", "assets/photos/5.png"],
       lines: [
         "The sacred day two souls united to write a timeless love story.",
@@ -318,7 +318,7 @@ window.MEMORIES = {
       relation: "Life Partner",
       duration: "02:15",
       thumb: "assets/photos/3.jpeg",
-      videoSrc: "assets/videos/video.mp4",
+      videoSrc: "assets/videos/video2-final.mp4",
       quote: "Fifty years of walking beside you has been the greatest privilege of my lifetime."
     },
     {
@@ -327,7 +327,7 @@ window.MEMORIES = {
       relation: "Children",
       duration: "03:40",
       thumb: "assets/photos/4.png",
-      videoSrc: "assets/videos/video.mp4",
+      videoSrc: "assets/videos/video2-final.mp4",
       quote: "Amma, everything we are today is because of your endless love and sacrifices."
     },
     {
@@ -336,7 +336,7 @@ window.MEMORIES = {
       relation: "Grandkids",
       duration: "01:30",
       thumb: "assets/photos/6.png",
-      videoSrc: "assets/videos/video.mp4",
+      videoSrc: "assets/videos/video2-final.mp4",
       quote: "Happy Birthday Paati! We love you to the moon and beyond all the stars!"
     },
     {
@@ -345,7 +345,7 @@ window.MEMORIES = {
       relation: "Siblings",
       duration: "02:50",
       thumb: "assets/photos/2.jpeg",
-      videoSrc: "assets/videos/video.mp4",
+      videoSrc: "assets/videos/video2-final.mp4",
       quote: "To the sweet sister who always looked after all of us — happy 50th golden milestone!"
     },
     {
@@ -354,7 +354,7 @@ window.MEMORIES = {
       relation: "Lifelong Friends",
       duration: "02:10",
       thumb: "assets/photos/5.png",
-      videoSrc: "assets/videos/video.mp4",
+      videoSrc: "assets/videos/video2-final.mp4",
       quote: "Cheers to 50 years of sparkling laughter and memories that will never fade!"
     }
   ],
